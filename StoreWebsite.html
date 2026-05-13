@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkyRise Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070b17;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Background Glow */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00c3ff22;
+    filter:blur(120px);
+    top:-200px;
+    left:-200px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#8a2be233;
+    filter:blur(120px);
+    bottom:-200px;
+    right:-200px;
+    z-index:-1;
+}
+
+/* Navbar */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:34px;
+    font-weight:700;
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#00c3ff;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.hero h1{
+    font-size:85px;
+    line-height:1.1;
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:25px;
+    font-size:20px;
+    max-width:800px;
+    color:#cfcfcf;
+}
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 32px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+    text-decoration:none;
+}
+
+.primary-btn{
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    color:white;
+}
+
+.secondary-btn{
+    border:2px solid #00c3ff;
+    color:white;
+    background:transparent;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 25px rgba(0,195,255,0.4);
+}
+
+/* Titles */
+
+.section-title{
+    text-align:center;
+    font-size:50px;
+    margin-bottom:50px;
+}
+
+/* Rank Cards */
+
+.ranks{
+    padding:50px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.rank-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:35px;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.rank-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(0,195,255,0.25);
+}
+
+.popular{
+    border:2px solid gold;
+}
+
+.tag{
+    position:absolute;
+    top:18px;
+    right:-38px;
+    background:gold;
+    color:black;
+    padding:8px 45px;
+    transform:rotate(45deg);
+    font-size:12px;
+    font-weight:700;
+}
+
+.rank-name{
+    font-size:36px;
+    font-weight:700;
+}
+
+.price{
+    margin:20px 0;
+    font-size:42px;
+    color:#00c3ff;
+    font-weight:700;
+}
+
+.features{
+    list-style:none;
+    margin-bottom:30px;
+}
+
+.features li{
+    margin:14px 0;
+    color:#d8d8d8;
+}
+
+.buy-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.buy-btn:hover{
+    transform:scale(1.03);
+}
+
+/* Features */
+
+.server-features{
+    padding:80px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.feature-box{
+    background:rgba(255,255,255,0.05);
+    border-radius:22px;
+    padding:35px;
+    text-align:center;
+}
+
+.feature-box h2{
+    color:#00c3ff;
+    font-size:38px;
+}
+
+/* Footer */
+
+footer{
+    margin-top:70px;
+    padding:50px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
+}
+
+footer p{
+    margin-top:15px;
+    color:#bbbbbb;
+}
+
+/* Discord Floating */
+
+.discord-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#5865F2;
+    padding:16px 22px;
+    border-radius:18px;
+    font-weight:600;
+    animation:float 2s infinite ease-in-out;
+    box-shadow:0 0 25px rgba(88,101,242,0.4);
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .section-title{
+        font-size:38px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        SkyRise
+    </div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#ranks">Ranks</a>
+        <a href="#features">Features</a>
+        <a href="#footer">Support</a>
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        SkyRise Store
+    </h1>
+
+    <p>
+        Upgrade your BedWars experience with premium ranks,
+        exclusive cosmetics, queue priority, particles,
+        chat colors, and many more powerful perks.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="#ranks" class="btn primary-btn">
+            View Ranks
+        </a>
+
+        <a href="https://discord.gg/YOURDISCORD"
+           target="_blank"
+           class="btn secondary-btn">
+            Join Discord
+        </a>
+
+    </div>
+
+</section>
+
+<!-- RANKS -->
+
+<h1 class="section-title" id="ranks">
+    Premium Ranks
+</h1>
+
+<section class="ranks">
+
+    <!-- SUPREME -->
+
+    <div class="rank-card popular">
+
+        <div class="tag">
+            BEST
+        </div>
+
+        <div class="rank-name" style="color:#ff3131;">
+            SUPREME
+        </div>
+
+        <div class="price">
+            $4.99
+        </div>
+
+        <ul class="features">
+            <li>✔ Animated Prefix</li>
+            <li>✔ 6x XP Boost</li>
+            <li>✔ All Cosmetics</li>
+            <li>✔ Nickname Command</li>
+            <li>✔ Premium Particles</li>
+            <li>✔ Priority Queue</li>
+        </ul>
+
+        <button class="buy-btn"
+        onclick="buyRank('SUPREME')">
+            Buy Now
+        </button>
+
+    </div>
+
+    <!-- ELITE -->
+
+    <div class="rank-card">
+
+        <div class="rank-name" style="color:#00c3ff;">
+            ELITE
+        </div>
+
+        <div class="price">
+            $3.99
+        </div>
+
+        <ul class="features">
+            <li>✔ Elite Prefix</li>
+            <li>✔ 4x XP Boost</li>
+            <li>✔ Lobby Gadgets</li>
+            <li>✔ Queue Priority</li>
+            <li>✔ Cosmetic Effects</li>
+        </ul>
+
+        <button class="buy-btn"
+        onclick="buyRank('ELITE')">
+            Buy Now
+        </button>
+
+    </div>
+
+    <!-- VIP+ -->
+
+    <div class="rank-card">
+
+        <div class="rank-name" style="color:#55ffff;">
+            VIP+
+        </div>
+
+        <div class="price">
+            $2.99
+        </div>
+
+        <ul class="features">
+            <li>✔ VIP+ Prefix</li>
+            <li>✔ 3x XP Boost</li>
+            <li>✔ Chat Colors</li>
+            <li>✔ Basic Cosmetics</li>
+        </ul>
+
+        <button class="buy-btn"
+        onclick="buyRank('VIP+')">
+            Buy Now
+        </button>
+
+    </div>
+
+    <!-- AURA -->
+
+    <div class="rank-card">
+
+        <div class="rank-name" style="color:#bb66ff;">
+            AURA
+        </div>
+
+        <div class="price">
+            $1.99
+        </div>
+
+        <ul class="features">
+            <li>✔ Aura Prefix</li>
+            <li>✔ 2x XP Boost</li>
+            <li>✔ Cosmetics</li>
+            <li>✔ Colored Chat</li>
+        </ul>
+
+        <button class="buy-btn"
+        onclick="buyRank('AURA')">
+            Buy Now
+        </button>
+
+    </div>
+
+    <!-- VIP -->
+
+    <div class="rank-card">
+
+        <div class="rank-name" style="color:#55ff55;">
+            VIP
+        </div>
+
+        <div class="price">
+            $1.00
+        </div>
+
+        <ul class="features">
+            <li>✔ VIP Prefix</li>
+            <li>✔ Queue Priority</li>
+            <li>✔ Basic Cosmetics</li>
+            <li>✔ 1.5x XP Boost</li>
+        </ul>
+
+        <button class="buy-btn"
+        onclick="buyRank('VIP')">
+            Buy Now
+        </button>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<h1 class="section-title" id="features">
+    Why SkyRise?
+</h1>
+
+<section class="server-features">
+
+    <div class="feature-box">
+        <h2>24/7</h2>
+        <p>Always Online</p>
+    </div>
+
+    <div class="feature-box">
+        <h2>1.8+</h2>
+        <p>Version Support</p>
+    </div>
+
+    <div class="feature-box">
+        <h2>FAST</h2>
+        <p>Smooth BedWars Gameplay</p>
+    </div>
+
+    <div class="feature-box">
+        <h2>CUSTOM</h2>
+        <p>Unique Features & Events</p>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="footer">
+
+    <h2>
+        SkyRise MC
+    </h2>
+
+    <p>
+        Need help purchasing a rank?
+        Open a purchase ticket in our Discord server.
+    </p>
+
+    <br>
+
+    <a href="https://discord.gg/YOURDISCORD"
+       target="_blank"
+       class="btn primary-btn">
+        Open Purchase Ticket
+    </a>
+
+    <p>
+        © 2026 SkyRise MC. All Rights Reserved.
+    </p>
+
+</footer>
+
+<!-- FLOATING DISCORD -->
+
+<div class="discord-float">
+    Join SkyRise Discord!
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function buyRank(rank){
+
+    const discordLink =
+    "https://discord.gg/YOURDISCORD";
+
+    alert(
+        "You selected the " +
+        rank +
+        " rank.\nYou will now be redirected to Discord to open a purchase ticket."
+    );
+
+    window.open(discordLink, "_blank");
+}
+
+/* Fake Live Purchases */
+
+const purchases = [
+    "PlayerX purchased SUPREME!",
+    "NoobMaster bought VIP+!",
+    "Shadow purchased ELITE!",
+    "Dragon bought AURA!",
+    "Techno purchased VIP!"
+];
+
+setInterval(() => {
+
+    const randomPurchase =
+    purchases[Math.floor(Math.random() * purchases.length)];
+
+    console.log(randomPurchase);
+
+}, 3000);
+
+/* Title Animation */
+
+let titleText = "SkyRise Store";
+let position = 0;
+
+setInterval(() => {
+
+    document.title =
+    titleText.substring(position) +
+    titleText.substring(0, position);
+
+    position++;
+
+    if(position > titleText.length){
+        position = 0;
+    }
+
+}, 300);
+
+</script>
+
+</body>
+</html>
