@@ -1,495 +1,694 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkyRise Network</title>
+
+<title>SkyRise Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-  background:linear-gradient(135deg,#070b14,#111827,#0b1220);
-  font-family:Arial,sans-serif;
-  color:white;
-  overflow-x:hidden;
+    background:#070b17;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* Background Glow */
+/* BACKGROUND GLOW */
+
 body::before{
-  content:"";
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:
-  radial-gradient(circle at top left,#ff1a1a33,transparent 30%),
-  radial-gradient(circle at bottom right,#4da6ff22,transparent 30%);
-  z-index:-1;
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00c3ff22;
+    filter:blur(120px);
+    top:-200px;
+    left:-200px;
+    z-index:-1;
 }
 
-/* Navbar */
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 40px;
-  background:#0f172a;
-  border-bottom:2px solid #1e293b;
-  position:sticky;
-  top:0;
-  z-index:999;
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#8a2be233;
+    filter:blur(120px);
+    bottom:-200px;
+    right:-200px;
+    z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo{
-  font-size:34px;
-  font-weight:bold;
-  color:#ff4d4d;
-  text-shadow:0 0 12px #ff1a1a;
+    font-size:36px;
+    font-weight:700;
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
 }
 
 .nav-links a{
-  text-decoration:none;
-  color:white;
-  margin-left:25px;
-  font-weight:bold;
-  transition:0.3s;
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
 }
 
 .nav-links a:hover{
-  color:#ff4d4d;
-  text-shadow:0 0 10px #ff4d4d;
+    color:#00c3ff;
 }
 
-/* Hero */
+/* HERO */
+
 .hero{
-  text-align:center;
-  padding:100px 20px;
-  animation:fadein 1s ease;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:40px 20px;
 }
 
 .hero h1{
-  font-size:72px;
-  color:#ff4d4d;
-  text-shadow:
-  0 0 10px #ff4d4d,
-  0 0 20px #ff1a1a,
-  0 0 40px #ff1a1a;
+    font-size:90px;
+    line-height:1.1;
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-  margin-top:20px;
-  color:#d1d5db;
-  font-size:22px;
+    margin-top:25px;
+    font-size:20px;
+    max-width:850px;
+    color:#d0d0d0;
+    line-height:1.7;
 }
 
-/* Buttons */
-.buttons{
-  margin-top:40px;
+/* BUTTONS */
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
 .btn{
-  display:inline-block;
-  padding:15px 30px;
-  margin:10px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
+    padding:15px 32px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+    text-decoration:none;
 }
 
-.discord-btn{
-  background:#5865F2;
-  color:white;
-  box-shadow:0 0 15px #5865F2;
+.primary-btn{
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    color:white;
 }
 
-.discord-btn:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 25px #5865F2;
+.secondary-btn{
+    border:2px solid #00c3ff;
+    background:transparent;
+    color:white;
 }
 
-.ticket-btn{
-  background:#ff1a1a;
-  color:white;
-  box-shadow:0 0 15px #ff1a1a;
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 30px rgba(0,195,255,0.45);
 }
 
-.ticket-btn:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 25px #ff1a1a;
-}
+/* TITLES */
 
-/* Section Title */
 .section-title{
-  text-align:center;
-  font-size:42px;
-  margin-top:60px;
-  margin-bottom:30px;
-  text-shadow:0 0 10px #ff1a1a;
+    text-align:center;
+    font-size:52px;
+    margin-bottom:50px;
 }
 
-/* Tier Cards */
-.container{
-  display:flex;
-  gap:20px;
-  padding:20px;
-  justify-content:center;
-  flex-wrap:wrap;
+/* RANKS */
+
+.ranks{
+    padding:50px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
 }
 
-.tier{
-  width:240px;
-  min-height:250px;
-  background:#1b2538;
-  border-radius:15px;
-  overflow:hidden;
-  transition:0.3s;
+.rank-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:35px;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
 }
 
-.tier:hover{
-  transform:translateY(-8px) scale(1.03);
-  box-shadow:0 0 25px rgba(0,0,0,0.5);
+.rank-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 40px rgba(0,195,255,0.25);
 }
 
-.tier h2{
-  text-align:center;
-  padding:15px;
-  font-size:28px;
+.popular{
+    border:2px solid gold;
 }
 
-/* Tier Colors */
-
-.tierS{
-  background:linear-gradient(135deg,#ff4d4d,#ff1a1a);
-  box-shadow:0 0 20px #ff1a1a;
+.tag{
+    position:absolute;
+    top:18px;
+    right:-40px;
+    background:gold;
+    color:black;
+    padding:8px 50px;
+    transform:rotate(45deg);
+    font-size:12px;
+    font-weight:700;
 }
 
-.tierA{
-  background:#ff944d;
+.rank-name{
+    font-size:38px;
+    font-weight:700;
 }
 
-.tierB{
-  background:#ffd24d;
-  color:black;
+.price{
+    margin:20px 0;
+    font-size:45px;
+    color:#00c3ff;
+    font-weight:700;
 }
 
-.tierC{
-  background:#4da6ff;
+.features{
+    list-style:none;
+    margin-bottom:30px;
 }
 
-.tierD{
-  background:#374151;
+.features li{
+    margin:14px 0;
+    color:#d8d8d8;
 }
 
-/* Player Names */
-
-.name{
-  padding:12px;
-  border-top:1px solid #2c3550;
-  transition:0.3s;
-  cursor:grab;
+.buy-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(to right,#00c3ff,#8a2be2);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-.name:hover{
-  background:#24304a;
-  transform:translateX(4px);
+.buy-btn:hover{
+    transform:scale(1.03);
 }
 
-/* Info Cards */
+/* FEATURES */
 
-.info{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
-  padding:40px;
+.server-features{
+    padding:80px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
-.card{
-  background:#111827;
-  width:320px;
-  padding:25px;
-  border-radius:16px;
-  border:1px solid #1f2937;
-  transition:0.3s;
+.feature-box{
+    background:rgba(255,255,255,0.05);
+    border-radius:24px;
+    padding:35px;
+    text-align:center;
+    transition:0.3s;
 }
 
-.card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 0 20px rgba(255,77,77,0.3);
+.feature-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 30px rgba(138,43,226,0.2);
 }
 
-.card h3{
-  margin-bottom:15px;
-  color:#ff4d4d;
+.feature-box h2{
+    color:#00c3ff;
+    font-size:40px;
 }
 
-.card p{
-  color:#d1d5db;
-  line-height:1.6;
+.feature-box p{
+    margin-top:10px;
+    color:#d0d0d0;
 }
 
-/* Footer */
+/* FOOTER */
 
-.footer{
-  margin-top:60px;
-  text-align:center;
-  padding:30px;
-  background:#0f172a;
-  color:#9ca3af;
-  border-top:1px solid #1e293b;
+footer{
+    margin-top:80px;
+    padding:60px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
 }
 
-/* Animation */
-
-@keyframes fadein{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+footer p{
+    margin-top:15px;
+    color:#bbbbbb;
 }
 
-/* Mobile */
+/* FLOATING DISCORD */
+
+.discord-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#5865F2;
+    padding:16px 24px;
+    border-radius:18px;
+    font-weight:600;
+    cursor:pointer;
+    animation:float 2s infinite ease-in-out;
+    box-shadow:0 0 25px rgba(88,101,242,0.5);
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* RESPONSIVE */
 
 @media(max-width:768px){
 
-.hero h1{
-  font-size:50px;
-}
+    .hero h1{
+        font-size:55px;
+    }
 
-.navbar{
-  flex-direction:column;
-  gap:15px;
-}
+    .section-title{
+        font-size:38px;
+    }
+
+    .nav-links{
+        display:none;
+    }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 
-<div class="navbar">
+<nav>
 
 <div class="logo">
 SkyRise
 </div>
 
 <div class="nav-links">
-<a href="#leaderboard">Leaderboard</a>
+
+<a href="#">Home</a>
 <a href="#ranks">Ranks</a>
-<a href="#join">Join</a>
-</div>
+<a href="#features">Features</a>
+<a href="#footer">Support</a>
 
 </div>
 
-<!-- Hero -->
+</nav>
 
-<div class="hero">
+<!-- HERO -->
 
-<h1>SkyRise Network</h1>
+<section class="hero">
+
+<h1>
+SkyRise Store
+</h1>
 
 <p>
-Competitive Bedwars • Ranked Tier Tests • Active Community
+Upgrade your BedWars experience with premium ranks,
+exclusive cosmetics, queue priority, particles,
+chat colors, and many more powerful perks.
 </p>
 
-<div class="buttons">
+<div class="hero-buttons">
 
-<a class="btn discord-btn"
-href="https://discord.gg/bNuwNbSd3"
-target="_blank">
+<a href="#ranks" class="btn primary-btn">
+View Ranks
+</a>
+
+<a href="https://discord.gg/bNuwNbSd3"
+target="_blank"
+class="btn secondary-btn">
 Join Discord
 </a>
 
-<a class="btn ticket-btn"
-href="https://discord.com/channels/1502313889067700296/1504524612183261205"
-target="_blank">
-Purchase Rank
-</a>
+</div>
+
+</section>
+
+<!-- RANKS -->
+
+<h1 class="section-title" id="ranks">
+Premium Ranks
+</h1>
+
+<section class="ranks">
+
+<!-- SUPREME -->
+
+<div class="rank-card popular">
+
+<div class="tag">
+BEST
+</div>
+
+<div class="rank-name" style="color:#ff3131;">
+SUPREME
+</div>
+
+<div class="price">
+$4.99
+</div>
+
+<ul class="features">
+
+<li>✔ Animated Prefix</li>
+<li>✔ 6x XP Boost</li>
+<li>✔ All Cosmetics</li>
+<li>✔ Nickname Command</li>
+<li>✔ Premium Particles</li>
+<li>✔ Priority Queue</li>
+
+</ul>
+
+<button class="buy-btn"
+onclick="buyRank('SUPREME')">
+Buy Now
+</button>
 
 </div>
 
+<!-- ELITE -->
+
+<div class="rank-card">
+
+<div class="rank-name" style="color:#00c3ff;">
+ELITE
 </div>
 
-<!-- Tier Leaderboard -->
+<div class="price">
+$3.99
+</div>
 
-<h2 class="section-title" id="leaderboard">
-Tier Test Leaderboard
+<ul class="features">
+
+<li>✔ Elite Prefix</li>
+<li>✔ 4x XP Boost</li>
+<li>✔ Lobby Gadgets</li>
+<li>✔ Queue Priority</li>
+<li>✔ Cosmetic Effects</li>
+
+</ul>
+
+<button class="buy-btn"
+onclick="buyRank('ELITE')">
+Buy Now
+</button>
+
+</div>
+
+<!-- VIP+ -->
+
+<div class="rank-card">
+
+<div class="rank-name" style="color:#55ffff;">
+VIP+
+</div>
+
+<div class="price">
+$2.99
+</div>
+
+<ul class="features">
+
+<li>✔ VIP+ Prefix</li>
+<li>✔ 3x XP Boost</li>
+<li>✔ Chat Colors</li>
+<li>✔ Basic Cosmetics</li>
+
+</ul>
+
+<button class="buy-btn"
+onclick="buyRank('VIP+')">
+Buy Now
+</button>
+
+</div>
+
+<!-- AURA -->
+
+<div class="rank-card">
+
+<div class="rank-name" style="color:#bb66ff;">
+AURA
+</div>
+
+<div class="price">
+$1.99
+</div>
+
+<ul class="features">
+
+<li>✔ Aura Prefix</li>
+<li>✔ 2x XP Boost</li>
+<li>✔ Cosmetics</li>
+<li>✔ Colored Chat</li>
+
+</ul>
+
+<button class="buy-btn"
+onclick="buyRank('AURA')">
+Buy Now
+</button>
+
+</div>
+
+<!-- VIP -->
+
+<div class="rank-card">
+
+<div class="rank-name" style="color:#55ff55;">
+VIP
+</div>
+
+<div class="price">
+$1.00
+</div>
+
+<ul class="features">
+
+<li>✔ VIP Prefix</li>
+<li>✔ Queue Priority</li>
+<li>✔ Basic Cosmetics</li>
+<li>✔ 1.5x XP Boost</li>
+
+</ul>
+
+<button class="buy-btn"
+onclick="buyRank('VIP')">
+Buy Now
+</button>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<h1 class="section-title" id="features">
+Why SkyRise?
+</h1>
+
+<section class="server-features">
+
+<div class="feature-box">
+
+<h2>24/7</h2>
+<p>Always Online</p>
+
+</div>
+
+<div class="feature-box">
+
+<h2>1.8+</h2>
+<p>Version Support</p>
+
+</div>
+
+<div class="feature-box">
+
+<h2>FAST</h2>
+<p>Smooth BedWars Gameplay</p>
+
+</div>
+
+<div class="feature-box">
+
+<h2>CUSTOM</h2>
+<p>Unique Features & Events</p>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="footer">
+
+<h2>
+SkyRise MC
 </h2>
 
-<div class="container">
-
-<div class="tier" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-<h2 class="tierS">S</h2>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p1">
-Zerottick
-</div>
-
-</div>
-
-<div class="tier" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-<h2 class="tierA">A</h2>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p2">
-Thewier
-</div>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p3">
-raifgamingyt
-</div>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p4">
-Arzoz
-</div>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p5">
-ItzCold_YT
-</div>
-
-</div>
-
-<div class="tier" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-<h2 class="tierB">B</h2>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p6">
-HelexMC
-</div>
-
-</div>
-
-<div class="tier" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-<h2 class="tierC">C</h2>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p7">
-Gojocookie
-</div>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p8">
-Hazem_65
-</div>
-
-</div>
-
-<div class="tier" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-<h2 class="tierD">D</h2>
-
-<div class="name" draggable="true" ondragstart="drag(event)" id="p9">
-Player
-</div>
-
-</div>
-
-</div>
-
-<!-- Info Section -->
-
-<h2 class="section-title" id="ranks">
-Why Join SkyRise?
-</h2>
-
-<div class="info">
-
-<div class="card">
-
-<h3>⚔ Competitive Tier Tests</h3>
-
 <p>
-Fight against skilled players and climb from D Tier to the powerful S Tier.
+Need help purchasing a rank?
+Open a purchase ticket in our Discord server.
 </p>
 
-</div>
+<br>
 
-<div class="card">
-
-<h3>👑 Purchase Exclusive Ranks</h3>
-
-<p>
-Open a ticket and purchase premium ranks with cool perks and special Discord roles.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🔥 Active Community</h3>
-
-<p>
-Join events, make friends, play Bedwars, and become part of the SkyRise community.
-</p>
-
-</div>
-
-</div>
-
-<!-- Join Section -->
-
-<h2 class="section-title" id="join">
-Join SkyRise Today
-</h2>
-
-<div class="hero" style="padding-top:20px;">
-
-<a class="btn discord-btn"
-href="https://discord.gg/bNuwNbSd3"
-target="_blank">
-Join Discord Server
+<a href="https://discord.com/channels/1502313889067700296/1504524612183261205"
+target="_blank"
+class="btn primary-btn">
+Open Purchase Ticket
 </a>
 
-<a class="btn ticket-btn"
-href="https://discord.com/channels/1502313889067700296/1504524612183261205"
-target="_blank">
-Create Purchase Ticket
-</a>
+<p>
+© 2026 SkyRise MC. All Rights Reserved.
+</p>
+
+</footer>
+
+<!-- FLOATING DISCORD -->
+
+<div class="discord-float"
+onclick="window.open('https://discord.gg/bNuwNbSd3','_blank')">
+
+Join SkyRise Discord!
 
 </div>
 
-<!-- Footer -->
-
-<div class="footer">
-© 2026 SkyRise Network • All Rights Reserved
-</div>
+<!-- JAVASCRIPT -->
 
 <script>
 
-function allowDrop(ev){
-  ev.preventDefault();
+function buyRank(rank){
+
+    const ticketLink =
+    "https://discord.com/channels/1502313889067700296/1504524612183261205";
+
+    alert(
+        "You selected the " +
+        rank +
+        " rank.\nRedirecting you to the purchase ticket."
+    );
+
+    window.open(ticketLink, "_blank");
 }
 
-function drag(ev){
-  ev.dataTransfer.setData("text", ev.target.id);
-}
+/* FAKE LIVE PURCHASES */
 
-function drop(ev){
-  ev.preventDefault();
+const purchases = [
 
-  var data = ev.dataTransfer.getData("text");
+    "PlayerX purchased SUPREME!",
+    "NoobMaster bought VIP+!",
+    "Shadow purchased ELITE!",
+    "Dragon bought AURA!",
+    "Techno purchased VIP!"
 
-  ev.target.closest(".tier")
-  .appendChild(document.getElementById(data));
-}
+];
+
+setInterval(() => {
+
+    const randomPurchase =
+    purchases[Math.floor(Math.random() * purchases.length)];
+
+    console.log(randomPurchase);
+
+}, 3000);
+
+/* TITLE ANIMATION */
+
+let titleText = "SkyRise Store";
+let position = 0;
+
+setInterval(() => {
+
+    document.title =
+    titleText.substring(position) +
+    titleText.substring(0, position);
+
+    position++;
+
+    if(position > titleText.length){
+
+        position = 0;
+
+    }
+
+}, 300);
 
 </script>
 
 </body>
 </html>
-```
