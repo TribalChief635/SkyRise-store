@@ -384,7 +384,7 @@ chat colors, and many more powerful perks.
 <div class="hero-buttons">
 
 <a href="#ranks" class="btn primary-btn">
-View Ranks
+View Ranks & Cosmetics
 </a>
 
 <a href="https://discord.gg/bNuwNbSd3"
@@ -552,6 +552,73 @@ Buy Now
 
 </div>
 
+<!-- CUSTOM RANK -->
+
+<div class="rank-card popular">
+
+<div class="tag">
+LIMITED
+</div>
+
+<div class="rank-name" style="color:#ffaa00;">
+CUSTOM
+</div>
+
+<div class="price">
+$8.00
+</div>
+
+<ul class="features">
+
+<li>✔ Fully Custom Prefix</li>
+<li>✔ Custom Chat Color</li>
+<li>✔ Exclusive Particle Effects</li>
+<li>✔ Custom Nickname Style</li>
+<li>✔ Highest Queue Priority</li>
+<li>✔ Private Cosmetic Access</li>
+<li>✔ Premium Support</li>
+
+</ul>
+
+<button class="buy-btn"
+onclick="buyRank('CUSTOM RANK')">
+Buy Now
+</button>
+
+</div>
+
+<!-- CUSTOM CHAT COLOR -->
+
+<div class="rank-card">
+
+<div class="rank-name" style="
+background:linear-gradient(to right,#ff0000,#00c3ff,#00ff88,#ff00ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+">
+CUSTOM CHAT COLOR
+</div>
+
+<div class="price">
+$3.00
+</div>
+
+<ul class="features">
+
+<li>✔ Choose Any Chat Color</li>
+<li>✔ Gradient Chat Support</li>
+<li>✔ RGB Styled Messages</li>
+<li>✔ Unique Player Identity</li>
+
+</ul>
+
+<button class="buy-btn"
+onclick="buyRank('CUSTOM CHAT COLOR')">
+Buy Now
+</button>
+
+</div>
+
 </section>
 
 <!-- FEATURES -->
@@ -640,7 +707,7 @@ function buyRank(rank){
     alert(
         "You selected the " +
         rank +
-        " rank.\nRedirecting you to the purchase ticket."
+        ".\nRedirecting you to the purchase ticket."
     );
 
     window.open(ticketLink, "_blank");
@@ -654,7 +721,8 @@ const purchases = [
     "NoobMaster bought VIP+!",
     "Shadow purchased ELITE!",
     "Dragon bought AURA!",
-    "Techno purchased VIP!"
+    "Techno purchased VIP!",
+    "Legend bought CUSTOM RANK!"
 
 ];
 
