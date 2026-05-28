@@ -377,8 +377,8 @@ SkyRise Store
 
 <p>
 Upgrade your BedWars experience with premium ranks,
-exclusive cosmetics, queue priority, particles,
-chat colors, and many more powerful perks.
+exclusive commands, special abilities,
+chat customization and many more cool perks.
 </p>
 
 <div class="hero-buttons">
@@ -424,11 +424,10 @@ $8.00
 <ul class="features">
 
 <li>✔ Fully Custom Prefix</li>
+<li>✔ Fly Command Access</li>
 <li>✔ Custom Chat Color</li>
-<li>✔ Exclusive Particle Effects</li>
-<li>✔ Custom Nickname Style</li>
-<li>✔ Highest Queue Priority</li>
-<li>✔ Private Cosmetic Access</li>
+<li>✔ Nickname Command</li>
+<li>✔ Exclusive Commands</li>
 <li>✔ Premium Support</li>
 
 </ul>
@@ -459,11 +458,11 @@ $4.99
 <ul class="features">
 
 <li>✔ Animated Prefix</li>
-<li>✔ 6x XP Boost</li>
-<li>✔ All Cosmetics</li>
+<li>✔ Fly Command Access</li>
 <li>✔ Nickname Command</li>
-<li>✔ Premium Particles</li>
-<li>✔ Priority Queue</li>
+<li>✔ Colored Chat</li>
+<li>✔ Special Join Message</li>
+<li>✔ Exclusive Commands</li>
 
 </ul>
 
@@ -489,10 +488,10 @@ $3.99
 <ul class="features">
 
 <li>✔ Elite Prefix</li>
-<li>✔ 4x XP Boost</li>
-<li>✔ Lobby Gadgets</li>
-<li>✔ Queue Priority</li>
-<li>✔ Cosmetic Effects</li>
+<li>✔ Fly Command Access</li>
+<li>✔ Colored Chat</li>
+<li>✔ Nickname Command</li>
+<li>✔ Extra Commands</li>
 
 </ul>
 
@@ -518,9 +517,9 @@ $2.99
 <ul class="features">
 
 <li>✔ VIP+ Prefix</li>
-<li>✔ 3x XP Boost</li>
-<li>✔ Chat Colors</li>
-<li>✔ Basic Cosmetics</li>
+<li>✔ Fly Command Access</li>
+<li>✔ Colored Chat</li>
+<li>✔ Extra Commands</li>
 
 </ul>
 
@@ -546,9 +545,9 @@ $1.99
 <ul class="features">
 
 <li>✔ Aura Prefix</li>
-<li>✔ 2x XP Boost</li>
-<li>✔ Cosmetics</li>
 <li>✔ Colored Chat</li>
+<li>✔ Fun Commands</li>
+<li>✔ Special Join Message</li>
 
 </ul>
 
@@ -574,9 +573,9 @@ $1.00
 <ul class="features">
 
 <li>✔ VIP Prefix</li>
-<li>✔ Queue Priority</li>
-<li>✔ Basic Cosmetics</li>
-<li>✔ 1.5x XP Boost</li>
+<li>✔ Colored Chat</li>
+<li>✔ Basic Commands</li>
+<li>✔ VIP Tag</li>
 
 </ul>
 
@@ -708,28 +707,6 @@ function buyRank(rank){
 
     window.open(ticketLink, "_blank");
 }
-
-/* FAKE LIVE PURCHASES */
-
-const purchases = [
-
-    "PlayerX purchased SUPREME!",
-    "NoobMaster bought VIP+!",
-    "Shadow purchased ELITE!",
-    "Dragon bought AURA!",
-    "Techno purchased VIP!",
-    "Legend bought CUSTOM RANK!"
-
-];
-
-setInterval(() => {
-
-    const randomPurchase =
-    purchases[Math.floor(Math.random() * purchases.length)];
-
-    console.log(randomPurchase);
-
-}, 3000);
 
 /* TITLE ANIMATION */
 
